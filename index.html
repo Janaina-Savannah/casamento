@@ -53,6 +53,7 @@
         <a href="#confirmacao" class="nav-link" data-i18n="confirmacao"
           >Confirmação</a
         >
+        <a href="#guia" class="nav-link">REISGIDS</a>
       </nav>
       <div class="hero-background"></div>
       <div class="monograma-inicial-container">
@@ -354,6 +355,143 @@
           <div id="mensagem" class="status-msg"></div>
         </div>
       </section>
+      <section id="guia" class="section-block">
+        <h2>REISGIDS</h2>
+        <div class="separador">
+          <span></span>
+        </div>
+        <p
+          style="
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+          "
+        >
+          We zijn ontzettend blij dat we jullie in Fortaleza mogen verwelkomen!
+          We willen deze ervaring alvast extra bijzonder maken, nog voordat onze
+          grote dag aanbreekt.
+        </p>
+        <p
+          style="
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+          "
+        >
+          Met veel liefde hebben we een reisgids samengesteld met tips voor
+          accommodaties, vervoer, stranden, uitstapjes, bezienswaardigheden en
+          andere handige informatie. Zo kunnen jullie optimaal genieten van
+          Fortaleza en alvast een beetje kennismaken met de prachtige plekjes
+          die Brazilië te bieden heeft.
+        </p>
+        <p
+          style="
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+          "
+        >
+          Neem gerust een kijkje via de onderstaande link!
+        </p>
+        <p
+          style="
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+          "
+        >
+          Pak jullie koffers maar in en kom samen met ons Brazilië ontdekken!
+        </p>
+        <div class="guia-galeria-container">
+          <div class="guia-galeria">
+            <figure class="guia-item">
+              <img
+                class="wide"
+                src="./imgs/locais/beira_mar.jpeg"
+                alt="Beira Mar"
+              />
+              <figcaption>Beira Mar</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img
+                class="wide"
+                src="./imgs/locais/praia_do_futuro.jpeg"
+                alt="Praia do Futuro"
+              />
+              <figcaption>Praia do Futuro</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img
+                class="wide"
+                src="./imgs/locais/cumbuco.jpeg"
+                alt="Cumbuco"
+              />
+              <figcaption>Cumbuco</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img
+                class="wide"
+                src="./imgs/locais/morro_branco.jpeg"
+                alt="Morro Branco"
+              />
+              <figcaption>Morro Branco</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img
+                class="wide"
+                src="./imgs/locais/canoa.jpeg"
+                alt="Canoa Quebrada"
+              />
+              <figcaption>Canoa Quebrada</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img
+                class="wide"
+                src="./imgs/locais/beach_park.jpeg"
+                alt="Beach Park"
+              />
+              <figcaption>Beach Park</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img
+                class="wide"
+                src="./imgs/locais/pedra_furada.jpeg"
+                alt="Pedra Furada"
+              />
+              <figcaption>Pedra Furada</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img class="wide" src="./imgs/locais/duna.jpeg" alt="Dunas" />
+              <figcaption>Dunas</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img
+                class="wide"
+                src="./imgs/locais/lagoa_azul.jpeg"
+                alt="Lagoa Azul"
+              />
+              <figcaption>Lagoa Azul</figcaption>
+            </figure>
+
+            <figure class="guia-item">
+              <img src="./imgs/locais/castelao.jpeg" alt="Castelão" />
+              <figcaption>Arena Castelão</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
     </div>
     <section class="final-imagem">
       <div class="monograma-final-container">
@@ -361,6 +499,8 @@
       </div>
       <div class="final-background"></div>
     </section>
+
+    <!-- SEÇÃO LISTA DE PRESENTES -->
 
     <!-- MODAIS DE PAGAMENTO (PIX E CARTÃO) -->
     <div id="pixModal" class="modal">
@@ -1216,7 +1356,7 @@
         "touchstart",
         () => {
           pausado = true;
-          clearTimeout(timeoutProximaFoto);
+          clearTimeout(timeoutPro_guiaximaFoto);
           clearTimeout(retomarTimeout);
         },
         { passive: true },
@@ -1232,6 +1372,87 @@
       // Inicia após 2 segundos
       setTimeout(() => {
         agendarProxima();
+      }, 2000);
+
+      const guia_galeria = document.querySelector(".guia-galeria");
+      let pausado_guia = false;
+      let timeoutProximaFoto_guia = null;
+      let retomarTimeout_guia = null;
+
+      function obterLarguraItem_guia() {
+        const foto_guia = guia_galeria.querySelector("img");
+        if (!foto_guia) return 0;
+        const gap = parseFloat(getComputedStyle(guia_galeria).gap) || 0;
+        return foto_guia.offsetWidth + gap;
+      }
+
+      function passarParaProximaFoto_guia() {
+        if (pausado_guia) return;
+
+        const larguraItem_guia = obterLarg_guiauraItem_guia();
+        if (!larguraItem_guia) return;
+
+        const maxScroll = guia_galeria.scrollWidth - guia_galeria.clientWidth;
+
+        // Descobre em qual foto a galeria está parada atualmente (arredondado)
+        const indiceAtual_guia = Math.round(
+          guia_galeria.scrollLeft / larguraItem_guia,
+        );
+        let proximoIndice_guia = indiceAtual_guia + 1;
+
+        // Se chegou ao fim ou passou do limite, volta para o início
+        if (guia_galeria.scrollLeft >= maxScroll - 5) {
+          proximoIndice_guia = 0;
+        }
+
+        // Rola perfeitamente para a foto calculada
+        guia_galeria.scrollTo({
+          left: proximoIndice_guia * larguraItem_guia,
+          behavior: "smooth",
+        });
+
+        agendarProxima();
+      }
+
+      function agendarProxima_guia() {
+        clearTimeout(timeoutProximaFoto_guia);
+        timeoutProximaFoto = setTimeout(() => {
+          passarParaProximaFoto_guia();
+        }, 3500); // 1s de transição + 2.5s parada
+      }
+
+      function pausarEAgendarRetomo_guia() {
+        pausado_guia = true;
+        clearTimeout(timeoutProximaFoto_guia);
+        clearTimeout(retomarTimeout_guia);
+
+        retomarTimeout_guia = setTimeout(() => {
+          pausado_guia = false;
+          passarParaProximaFoto_guia();
+        }, 5000);
+      }
+
+      // Eventos de toque no celular
+      guia_galeria.addEventListener(
+        "touchstart",
+        () => {
+          pausado_guia = true;
+          clearTimeout(timeoutProximaFoto_guia);
+          clearTimeout(retomarTimeout_guia);
+        },
+        { passive: true },
+      );
+
+      guia_galeria.addEventListener("touchend", pausarEAgendarRetomo_guia);
+
+      // Pausa se o usuário usar o scroll (mouse ou barra de rolagem)
+      guia_galeria.addEventListener("wheel", pausarEAgendarRetomo_guia, {
+        passive: true,
+      });
+
+      // Inicia após 2 segundos
+      setTimeout(() => {
+        agendarProxima_guia();
       }, 2000);
 
       const traducoes = {
@@ -1424,7 +1645,13 @@
 
           erroIniciarPagamento: "Não foi possível iniciar o pagamento.",
           nenhumConviteEncontrado: "Nenhum convite encontrado.",
-
+          guia: "GUIA DE VIAGEM",
+          guia1:
+            "Estamos imensamente felizes em poder receber vocês em Fortaleza! Queremos tornar essa experiência ainda mais especial, mesmo antes da chegada do nosso grande dia.",
+          guia2:
+            "Preparamos com muito carinho um guia de viagem com dicas de hospedagem, transporte, praias, passeios, pontos turísticos e outras informações úteis. Assim, vocês poderão aproveitar ao máximo Fortaleza e já começar a conhecer um pouquinho dos lugares incríveis que o Brasil tem a oferecer.",
+          guia3: "Fiquem à vontade para conferir tudo pelo link abaixo!",
+          guia4: "Preparem as malas e venham descobrir o Brasil com a gente!",
           // Presentes
           presentesLista: {
             "Só pra dizer que não dei nada":
@@ -1692,6 +1919,14 @@
           linkPagamentoNaoRetornado: "Payment link was not returned.",
 
           erroIniciarPagamento: "Unable to start payment.",
+          guia: "REISGIDS",
+          guia1:
+            "We zijn ontzettend blij dat we jullie in Fortaleza mogen verwelkomen! We willen deze ervaring alvast extra bijzonder maken, nog voordat onze grote dag aanbreekt.",
+          guia2:
+            "Met veel liefde hebben we een reisgids samengesteld met tips voor accommodaties, vervoer, stranden, uitstapjes, bezienswaardigheden en andere handige informatie. Zo kunnen jullie optimaal genieten van Fortaleza en alvast een beetje kennismaken met de prachtige plekjes die Brazilië te bieden heeft.",
+          guia3: "Neem gerust een kijkje via de onderstaande link!",
+          guia4:
+            "Pak jullie koffers maar in en kom samen met ons Brazilië ontdekken!",
 
           // Gifts
           presentesLista: {

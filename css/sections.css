@@ -171,6 +171,91 @@ h2 {
   }
 }
 
+/* Galeria */
+
+/* Transforma o figure em um flex column para empilhar imagem e texto */
+.guia-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o texto em relação à imagem */
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  margin: 0; /* Remove margens padrão do figure */
+}
+
+/* Estiliza o texto do nome do local */
+.guia-item figcaption {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color, #333); /* Use sua variável de cor ou um padrão */
+  text-align: center;
+}
+
+.guia-galeria-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.guia-galeria {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0 15px;
+  scroll-snap-type: x mandatory; /* Força o alinhamento das fotos */
+  scroll-behavior: smooth; /* Animação nativa fluida */
+  margin-bottom: 30px;
+}
+
+.guia-galeria::-webkit-scrollbar {
+  height: 8px;
+}
+
+.guia-galeria::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+.guia-galeria img {
+  width: 450px;
+  height: 594px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.guia-galeria img:hover {
+  transform: scale(1.05);
+}
+
+.guia-galeria img.wide {
+  width: auto;
+  height: 594px;
+  max-width: 1500px;
+  object-fit: cover;
+}
+
+/* Responsivo (Mobile) */
+@media (max-width: 768px) {
+  .historia-galeria img.wide {
+    width: 100vw;
+    height: 100vw;
+    max-height: 500px;
+    object-fit: cover;
+  }
+}
+@media (max-width: 768px) {
+  .guia-galeria img.wide {
+    width: 100vw;
+    height: 100vw;
+    max-height: 500px;
+    object-fit: cover;
+  }
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
   .historia-top {
@@ -197,6 +282,34 @@ h2 {
     width: 72vw;
     height: 100vw;
     max-height: 500px;
+  }
+  .guia-galeria {
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 12px;
+  }
+
+  .guia-galeria img {
+    width: 72vw;
+    height: 100vw;
+    max-height: 500px;
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .guia-galeria {
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 12px;
+  }
+
+  .guia-galeria img,
+  .guia-galeria img.wide {
+    width: 72vw;
+    height: 100vw;
+    max-height: 500px;
+    object-fit: cover;
   }
 }
 
